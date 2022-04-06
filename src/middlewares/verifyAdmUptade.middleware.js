@@ -5,8 +5,8 @@ import users from "../database";
 const verifyAdmUptadeMiddlewares = (req, res, next) => {
   let token = req.headers.authorization;
   const { id } = req.params;
-  const decoded = jwt_decode(token);
-  const actualUser = users.find((user) => user.email === decoded.email);
+  const { email } = jwt_decode(token);
+  const actualUser = users.find((user) => user.email === email);
   const updateUser = users.find((user) => user.id === id);
 
   if (!token) {
