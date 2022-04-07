@@ -16,9 +16,18 @@ const createUserService = async (email, name, password, isAdm) => {
     id: uuidv4(),
   };
 
+  const visualUser = {
+    name,
+    email,
+    isAdm,
+    createdOn: date,
+    updatedOn: date,
+    id: newUser.id,
+  };
+
   users.push(newUser);
 
-  return newUser;
+  return visualUser;
 };
 
 export default createUserService;

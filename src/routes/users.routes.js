@@ -13,7 +13,7 @@ import verifyAdmUptadeMiddlewares from "../middlewares/verifyAdmUptade.middlewar
 const router = Router();
 
 router.post("", verifyEmailAvailabilityMiddleware, createUserController);
-router.get("/:id", verifyAuthTokenAdmMiddleware, listUsersController);
+router.get("/", verifyAuthTokenAdmMiddleware, listUsersController);
 router.patch("/:id", verifyAdmUptadeMiddlewares, updateUserController);
 router.delete("/:id", verifyAdmUptadeMiddlewares, deleteUserController);
 router.post("/login", userLoginController);

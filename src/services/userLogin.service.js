@@ -17,7 +17,7 @@ const userLoginService = (email, password, res) => {
 
   const token = jwt.sign({ email: email }, "SECRET_KEY", { expiresIn: "24h" });
 
-  return token;
+  return res.status(200).json({ token });
 };
 
 export default userLoginService;
