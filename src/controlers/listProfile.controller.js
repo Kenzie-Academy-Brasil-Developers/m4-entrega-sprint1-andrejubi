@@ -1,11 +1,17 @@
 import listProfileService from "../services/listProfile.service";
+import jwt from "jsonwebtoken";
+import users from "../database";
 
 const listProfileController = (req, res) => {
-  const { id } = req.params;
+  let token = req.headers.authorization;
 
-  const listProfile = listProfileService(id);
+  token = token.split(" ")[1];
 
-  return res.json(listProfile);
+  jwt.verify(token, "SECRET_KEY", (error, decode) => {
+    const { email } = decode;
+    const listProfile = listProfileService(email);
+    return res.json(listProfile);
+  });
 };
 
 export default listProfileController;

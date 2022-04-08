@@ -1,10 +1,10 @@
 import users from "../database";
 
-const deleteUserService = (id, res) => {
-  const userIndex = users.findIndex((element) => element.id === id);
+const deleteUserService = (email, res) => {
+  const userIndex = users.findIndex((element) => element.email === email);
 
   if (userIndex === -1) {
-    return "User not found";
+    return res.status(401).json({ message: "User not found" });
   }
 
   users.splice(userIndex, 1);
