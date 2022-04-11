@@ -19,6 +19,6 @@ router.get("/users", verifyAuthTokenAdmMiddleware, listUsersController);
 router.patch("/users/:id", verifyAdmUptadeMiddlewares, updateUserController);
 router.delete("/users/:id", verifyAdmUptadeMiddlewares, deleteUserController);
 router.post("/login", userLoginController);
-router.get("/profile", verifyAuthTokenMiddleware, listProfileController);
+router.get("/users/profile", verifyAuthTokenMiddleware, listProfileController);
 
 export default router;

@@ -16,7 +16,16 @@ const updateUserService = (id, name, email) => {
 
   users[userIndex] = { ...users[userIndex], ...updateUser };
 
-  return users[userIndex];
+  const visualUser = {
+    name,
+    email,
+    isAdm: users[userIndex].isAdm,
+    createdOn: users[userIndex].createdOn,
+    updatedOn: users[userIndex].updatedOn,
+    id: users[userIndex].id,
+  };
+
+  return visualUser;
 };
 
 export default updateUserService;

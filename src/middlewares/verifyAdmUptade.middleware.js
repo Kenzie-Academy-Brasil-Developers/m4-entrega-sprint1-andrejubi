@@ -16,9 +16,10 @@ const verifyAdmUptadeMiddlewares = (req, res, next) => {
     } else {
       const { id } = req.params;
       const updateUser = users.find((user) => user.id === id);
-      console.log(decoded, updateUser);
-      if (decoded.isAdm === false) {
-        if (decoded !== updateUser) {
+      const userDecoded = users.find((user) => user.email === decoded.email);
+
+      if (userDecoded.isAdm === false) {
+        if (userDecoded !== updateUser) {
           return res.status(401).json({ message: "Missing admin permissions" });
         }
       }
